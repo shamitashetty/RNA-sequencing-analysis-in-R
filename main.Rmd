@@ -11,6 +11,7 @@ biol_reps_data[1:5,1:5]
 ## FBgn0000015       1       0       0        1        1
 ## FBgn0000017    9976    8824    6422    11300    12067
 
+
 logbiolrepsdata=log2(biol_reps_data+.25)
 par(mfrow=c(3,3))
 for (i in 1:21) hist(logbiolrepsdata[,i],main=colnames(biol_reps_data)[i])
