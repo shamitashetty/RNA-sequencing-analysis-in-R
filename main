@@ -1,7 +1,8 @@
 
 biol_reps_data<-read.table("C:\\Users\\Shamita\\Desktop\\PSU\\biol_reps.txt",header = T)
 dim(biol_reps_data)
-## [1] 17564    21
+## [1] 17564    21 
+
 biol_reps_data[1:5,1:5]
 ##             CDIPT_2 CDIPT_3 CDIPT_4 KCTD13_1 KCTD13_2
 ## FBgn0000003       0       1       0        0        0
@@ -80,6 +81,7 @@ nrow(dds)
 
 rld <- rlog(dds)
 head(assay(rld), 3)
+
 ##                       1           2           3          4           5
 ## FBgn0000003 -1.28225052 -1.25451921 -1.28041958 -1.2820187 -1.28230945
 ## FBgn0000008 10.48612503 10.92848804 10.80617384 10.4889437 10.46966470
@@ -108,6 +110,7 @@ plot(assay(rld)[,1:2], pch=16, main="rlog", cex=0.3)
 
 sampleDists <- dist( t( assay(rld) ) )
 sampleDists
+
 ##           1        2        3        4        5        6        7        8
 ## 2  27.61928                                                               
 ## 3  29.71277 14.13129                                                      
@@ -130,14 +133,7 @@ sampleDists
 ## 20 37.56177 46.74597 45.47031 33.67993 30.23726 32.27017 28.29235 27.75797
 ## 21 35.79480 44.13561 43.37537 30.52379 28.50698 30.38235 25.69463 26.33825
 ##           9       10       11       12       13       14       15       16
-## 2                                                                         
-## 3                                                                         
-## 4                                                                         
-## 5                                                                         
-## 6                                                                         
-## 7                                                                         
-## 8                                                                         
-## 9                                                                         
+                                                                       
 ## 10 37.65367                                                               
 ## 11 29.48071 37.21525                                                      
 ## 12 26.17893 36.79145 13.44307                                             
@@ -151,22 +147,7 @@ sampleDists
 ## 20 27.82479 38.90865 33.87441 30.69253 24.93756 23.66498 23.61043 20.11916
 ## 21 26.93473 36.29862 31.65360 29.19062 22.60023 20.69373 21.26757 18.37784
 ##          17       18       19       20
-## 2                                     
-## 3                                     
-## 4                                     
-## 5                                     
-## 6                                     
-## 7                                     
-## 8                                     
-## 9                                     
-## 10                                    
-## 11                                    
-## 12                                    
-## 13                                    
-## 14                                    
-## 15                                    
-## 16                                    
-## 17                                    
+                                  
 ## 18 13.10717                           
 ## 19 18.03295 17.21076                  
 ## 20 19.00424 18.84864 18.32563         
@@ -358,41 +339,23 @@ resannotated= select(org.Dm.eg.db, keys=row.names(res), columns=cols, keytype="E
 write.csv(resannotated, file="annotated genes from result.csv")
 GOanalysisBP= read.csv("C:\\Users\\Shamita\\Desktop\\PSU\\spring 2016\\stat 555\\DEseq results\\GO chart_5DD20948D1C21462043470521.csv", header = T)
 head(GOanalysisBP)
-##        Category                                    Term Count        X.
-## 1 GOTERM_BP_FAT   GO:0000022~mitotic spindle elongation    39  4.659498
-## 2 GOTERM_BP_FAT           GO:0051231~spindle elongation    39  4.659498
-## 3 GOTERM_BP_FAT                  GO:0006412~translation    87 10.394265
-## 4 GOTERM_BP_FAT GO:0007052~mitotic spindle organization    41  4.898447
-## 5 GOTERM_BP_FAT         GO:0007051~spindle organization    44  5.256870
-## 6 GOTERM_BP_FAT    GO:0007010~cytoskeleton organization    68  8.124253
-##     PValue
-## 1 7.02e-25
-## 2 1.27e-24
-## 3 2.69e-16
-## 4 4.87e-11
-## 5 1.20e-10
-## 6 4.18e-10
-##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Genes
-## 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              FBGN0033699, FBGN0001942, FBGN0032518, FBGN0031980, FBGN0034968, FBGN0032987, FBGN0029897, FBGN0017579, FBGN0003517, FBGN0011272, FBGN0034138, FBGN0027948, FBGN0039857, FBGN0036213, FBGN0034743, FBGN0010409, FBGN0038834, FBGN0002590, FBGN0010408, FBGN0014026, FBGN0029785, FBGN0002626, FBGN0002607, FBGN0086710, FBGN0036825, FBGN0011284, FBGN0035422, FBGN0010078, FBGN0010265, FBGN0020910, FBGN0005593, FBGN0035753, FBGN0026250, FBGN0017545, FBGN0025286, FBGN0010411, FBGN0039359, FBGN0015756, FBGN0010198
-## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              FBGN0033699, FBGN0001942, FBGN0032518, FBGN0031980, FBGN0034968, FBGN0032987, FBGN0029897, FBGN0017579, FBGN0003517, FBGN0011272, FBGN0034138, FBGN0027948, FBGN0039857, FBGN0036213, FBGN0034743, FBGN0010409, FBGN0038834, FBGN0002590, FBGN0010408, FBGN0014026, FBGN0029785, FBGN0002626, FBGN0002607, FBGN0086710, FBGN0036825, FBGN0011284, FBGN0035422, FBGN0010078, FBGN0010265, FBGN0020910, FBGN0005593, FBGN0035753, FBGN0026250, FBGN0017545, FBGN0025286, FBGN0010411, FBGN0039359, FBGN0015756, FBGN0010198
+##        Category                                    Term Count        X.   PValue
+## 1 GOTERM_BP_FAT   GO:0000022~mitotic spindle elongation    39  4.659498   7.02e-25
+## 2 GOTERM_BP_FAT           GO:0051231~spindle elongation    39  4.659498   1.27e-24
+## 3 GOTERM_BP_FAT                  GO:0006412~translation    87 10.394265   2.69e-16
+## 4 GOTERM_BP_FAT GO:0007052~mitotic spindle organization    41  4.898447   4.87e-11
+## 5 GOTERM_BP_FAT         GO:0007051~spindle organization    44  5.256870   1.20e-10
+## 6 GOTERM_BP_FAT    GO:0007010~cytoskeleton organization    68  8.124253   4.18e-10
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            FBGN0033699, FBGN0001942, FBGN0032518, FBGN0031980, FBGN0034968, FBGN0032987, FBGN0029897, FBGN0017579, FBGN0003517, FBGN0011272, FBGN0034138, FBGN0027948, FBGN0039857, FBGN0036213, FBGN0034743, FBGN0010409, FBGN0038834, FBGN0002590, FBGN0010408, FBGN0014026, FBGN0029785, FBGN0002626, FBGN0002607, FBGN0086710, FBGN0036825, FBGN0011284, FBGN0035422, FBGN0010078, FBGN0010265, FBGN0020910, FBGN0005593, FBGN0035753, FBGN0026250, FBGN0017545, FBGN0025286, FBGN0010411, FBGN0039359, FBGN0015756, FBGN0010198
 ## 3 FBGN0032518, FBGN0001942, FBGN0033699, FBGN0037686, FBGN0032987, FBGN0029897, FBGN0086472, FBGN0017579, FBGN0010803, FBGN0000100, FBGN0011272, FBGN0031869, FBGN0004867, FBGN0034654, FBGN0003279, FBGN0039300, FBGN0036213, FBGN0034743, FBGN0039406, FBGN0002590, FBGN0037351, FBGN0038834, FBGN0010409, FBGN0010408, FBGN0003274, FBGN0025582, FBGN0014026, FBGN0002593, FBGN0015834, FBGN0002622, FBGN0029785, FBGN0002626, FBGN0033480, FBGN0086710, FBGN0028697, FBGN0064225, FBGN0010078, FBGN0005593, FBGN0035753, FBGN0003941, FBGN0003942, FBGN0025286, FBGN0030616, FBGN0023519, FBGN0019936, FBGN0001995, FBGN0039359, FBGN0260441, FBGN0031980, FBGN0036135, FBGN0034968, FBGN0034967, FBGN0002579, FBGN0037135, FBGN0037899, FBGN0003517, FBGN0034138, FBGN0039857, FBGN0039757, FBGN0003149, FBGN0026372, FBGN0039713, FBGN0033912, FBGN0002607, FBGN0005533, FBGN0011284, FBGN0036825, FBGN0035422, FBGN0020910, FBGN0010265, FBGN0034915, FBGN0030136, FBGN0026250, FBGN0017545, FBGN0042712, FBGN0037328, FBGN0028737, FBGN0034087, FBGN0010412, FBGN0035423, FBGN0030802, FBGN0010411, FBGN0016726, FBGN0004404, FBGN0015756, FBGN0004403, FBGN0010198, FBGN0015521
-## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    FBGN0033699, FBGN0001942, FBGN0032518, FBGN0031980, FBGN0034968, FBGN0040235, FBGN0032987, FBGN0029897, FBGN0017579, FBGN0003517, FBGN0011272, FBGN0034138, FBGN0027948, FBGN0039857, FBGN0036213, FBGN0034743, FBGN0010409, FBGN0038834, FBGN0002590, FBGN0010408, FBGN0086359, FBGN0014026, FBGN0029785, FBGN0002626, FBGN0002607, FBGN0086710, FBGN0036825, FBGN0011284, FBGN0035422, FBGN0010078, FBGN0010265, FBGN0020910, FBGN0005593, FBGN0035753, FBGN0026250, FBGN0017545, FBGN0025286, FBGN0010411, FBGN0039359, FBGN0015756, FBGN0010198
-## 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             FBGN0033699, FBGN0001942, FBGN0032518, FBGN0031980, FBGN0034968, FBGN0040235, FBGN0032987, FBGN0029897, FBGN0027492, FBGN0017579, FBGN0003517, FBGN0011272, FBGN0034138, FBGN0039857, FBGN0027948, FBGN0036213, FBGN0034743, FBGN0010409, FBGN0038834, FBGN0002590, FBGN0010408, FBGN0086359, FBGN0014026, FBGN0029785, FBGN0000152, FBGN0002626, FBGN0002607, FBGN0086710, FBGN0036825, FBGN0011284, FBGN0035422, FBGN0010078, FBGN0010265, FBGN0020910, FBGN0005593, FBGN0035753, FBGN0010314, FBGN0026250, FBGN0017545, FBGN0025286, FBGN0010411, FBGN0039359, FBGN0015756, FBGN0010198
-## 6                                                                                                                                                                                                                                                                     FBGN0033699, FBGN0001942, FBGN0032518, FBGN0040235, FBGN0000044, FBGN0029897, FBGN0000042, FBGN0032987, FBGN0038294, FBGN0017579, FBGN0011272, FBGN0027948, FBGN0004009, FBGN0036213, FBGN0034743, FBGN0002590, FBGN0038834, FBGN0010409, FBGN0010408, FBGN0000273, FBGN0014026, FBGN0029785, FBGN0053556, FBGN0002626, FBGN0014020, FBGN0086710, FBGN0259108, FBGN0010078, FBGN0005593, FBGN0035753, FBGN0000723, FBGN0086906, FBGN0025286, FBGN0039359, FBGN0031980, FBGN0034968, FBGN0020440, FBGN0002736, FBGN0023081, FBGN0014141, FBGN0027492, FBGN0003517, FBGN0034138, FBGN0039857, FBGN0000578, FBGN0000463, FBGN0086359, FBGN0003149, FBGN0032409, FBGN0000152, FBGN0002607, FBGN0011284, FBGN0036825, FBGN0035422, FBGN0010265, FBGN0020910, FBGN0003447, FBGN0010314, FBGN0013733, FBGN0026250, FBGN0017545, FBGN0010411, FBGN0085447, FBGN0000163, FBGN0001404, FBGN0015756, FBGN0000547, FBGN0010198
-##   List.Total Pop.Hits Pop.Total Fold.Enrichment Bonferroni Benjamini
-## 1        523       78      7937        7.587954   1.28e-21  1.28e-21
-## 2        523       79      7937        7.491904   2.31e-21  1.16e-21
-## 3        523      520      7937        2.539046   4.05e-13  1.35e-13
-## 4        523      194      7937        3.207280   8.88e-08  2.22e-08
-## 5        523      225      7937        2.967733   2.19e-07  4.38e-08
-## 6        523      465      7937        2.219273   7.62e-07  1.27e-07
-##        FDR
-## 1 1.19e-21
-## 2 2.16e-21
-## 3 3.77e-13
-## 4 8.28e-08
-## 5 2.04e-07
-## 6 7.12e-07
+                                                                                                                                                                                                                                                                     FBGN0033699, FBGN0001942, FBGN0032518, FBGN0040235, FBGN0000044, FBGN0029897, FBGN0000042, FBGN0032987, FBGN0038294, FBGN0017579, FBGN0011272, FBGN0027948, FBGN0004009, FBGN0036213, FBGN0034743, FBGN0002590, FBGN0038834, FBGN0010409, FBGN0010408, FBGN0000273, FBGN0014026, FBGN0029785, FBGN0053556, FBGN0002626, FBGN0014020, FBGN0086710, FBGN0259108, FBGN0010078, FBGN0005593, FBGN0035753, FBGN0000723, FBGN0086906, FBGN0025286, FBGN0039359, FBGN0031980, FBGN0034968, FBGN0020440, FBGN0002736, FBGN0023081, FBGN0014141, FBGN0027492, FBGN0003517, FBGN0034138, FBGN0039857, FBGN0000578, FBGN0000463, FBGN0086359, FBGN0003149, FBGN0032409, FBGN0000152, FBGN0002607, FBGN0011284, FBGN0036825, FBGN0035422, FBGN0010265, FBGN0020910, FBGN0003447, FBGN0010314, FBGN0013733, FBGN0026250, FBGN0017545, FBGN0010411, FBGN0085447, FBGN0000163, FBGN0001404, FBGN0015756, FBGN0000547, FBGN0010198
+##   List.Total Pop.Hits Pop.Total Fold.Enrichment Bonferroni Benjamini  FDR
+## 1        523       78      7937        7.587954   1.28e-21  1.28e-21   1.19e-21
+## 2        523       79      7937        7.491904   2.31e-21  1.16e-21   2.16e-21
+## 3        523      520      7937        2.539046   4.05e-13  1.35e-13   3.77e-13
+## 4        523      194      7937        3.207280   8.88e-08  2.22e-08   8.28e-08
+## 5        523      225      7937        2.967733   2.19e-07  4.38e-08   2.04e-07
+## 6        523      465      7937        2.219273   7.62e-07  1.27e-07   7.12e-07
 
 
 #GO analysis of all significant genes showing biological process GO
